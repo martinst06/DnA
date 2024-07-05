@@ -19,25 +19,19 @@ class Bubblesort(Sorter):
         A = list(A)
         print(A)
 
-        max = len(A) - 1
-        for sm in A:
-            currentPosition = 0
-            for sm in A:
-                num1 = currentPosition + 1
-                num2 = currentPosition + 2
-                if currentPosition == max:
-                    print(f"{currentPosition} sorted")
-                    time.sleep(1)
-                    
+        n = len(A)
 
-                elif A[currentPosition] > A[num1]:
-                    A[currentPosition:num2] = [A[num1], A[currentPosition]]
-                    currentPosition = currentPosition + 1
+
+        for sm in range(n):
+            for j in range(0, n - sm - 1):
+                if A[j] > A[j + 1]:
+                    A[j:j + 2] = [A[j + 1], A[j]]
+                    j = j + 1
                     print(A)
-                    time.sleep(0.1)
+                    time.sleep(0.01)
 
-                elif A[currentPosition] < A[num1]:
-                    currentPosition = currentPosition + 1
+                elif A[j] < A[j + 1]:
+                    j = j + 1
         else:
             return A
 
