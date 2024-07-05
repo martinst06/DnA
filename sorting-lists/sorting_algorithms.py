@@ -19,15 +19,13 @@ class Bubblesort(Sorter):
         A = list(A)
         print(A)
 
-        max = len(A)
-
-
+        max = len(A) - 1
         for sm in A:
             currentPosition = 0
             for sm in A:
                 num1 = currentPosition + 1
                 num2 = currentPosition + 2
-                if currentPosition == max - 1:
+                if currentPosition == max:
                     print(f"{currentPosition} sorted")
                     time.sleep(1)
                     
