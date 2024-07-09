@@ -17,7 +17,7 @@ class Bubblesort(Sorter):
     name = "BUBBLESORT"
     def sort(self, A):
         A = list(A)
-        print(A)
+        # print(A)
 
         n = len(A)
 
@@ -27,7 +27,7 @@ class Bubblesort(Sorter):
                 if A[j] > A[j + 1]:
                     A[j:j + 2] = [A[j + 1], A[j]]
                     j = j + 1
-                    print(A)
+                    # print(A)
                     time.sleep(0.01)
 
                 elif A[j] < A[j + 1]:
@@ -43,8 +43,49 @@ class Quicksort(Sorter):
     name = "QUICKSORT"
     def sort(self, A):
         A = list(A)
-        # TODO: Bitte implementieren
-        return A
+        print (A)
+        sorted_list = []
+
+
+        def getMedian(A):
+            if len(A) < 3:
+                if len(A) < 2:
+                    print(f"one: {A}")
+                    for i in A:
+                        sorted_list.append(i)
+                elif len(A) == 2:
+                    if A[0] > A[1]:
+                        A[0], A[1] = A[1], A[0]
+                        print(f"two: {A}")
+                        for i in A:
+                            sorted_list.append(i)
+
+            else:
+                avg = random.sample(A, k = 3)
+                print(f"avg nrs: {avg}")
+                median = (sum(avg) // len(avg))
+                print(f"median {median}")
+                sort(median, A)
+                print()
+
+        def sort(median, A):
+            time.sleep(1)
+            smaller = []
+            bigger = []
+            for i in A:
+                if i <= median:
+                    smaller.append(i)
+                elif i >= median:
+                    bigger.append(i)
+            print(f"smaller: {smaller}")
+            getMedian(smaller) # do if smaller is empty, call: getMedian(bigger)
+            # getMedian(bigger)
+
+
+        getMedian(A)
+        if len(sorted_list) == len(A):
+            return sorted_list
+        print(f"SL: {sorted_list}")
 
 class Mergesort(Sorter):
     """
