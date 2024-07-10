@@ -50,42 +50,33 @@ class Quicksort(Sorter):
         def getMedian(A):
             if len(A) < 3:
                 if len(A) < 2:
-                    print(f"one: {A}")
                     for i in A:
                         sorted_list.append(i)
                 elif len(A) == 2:
                     if A[0] > A[1]:
                         A[0], A[1] = A[1], A[0]
-                        print(f"two: {A}")
-                        for i in A:
-                            sorted_list.append(i)
-
+                    for i in A:
+                        sorted_list.append(i)
             else:
                 avg = random.sample(A, k = 3)
-                print(f"avg nrs: {avg}")
                 median = (sum(avg) // len(avg))
-                print(f"median {median}")
                 sort(median, A)
-                print()
+
 
         def sort(median, A):
-            time.sleep(1)
             smaller = []
             bigger = []
             for i in A:
                 if i <= median:
                     smaller.append(i)
-                elif i >= median:
+                elif i > median:
                     bigger.append(i)
             print(f"smaller: {smaller}")
-            getMedian(smaller) # do if smaller is empty, call: getMedian(bigger)
-            # getMedian(bigger)
-
+            getMedian(smaller)
+            getMedian(bigger)
 
         getMedian(A)
-        if len(sorted_list) == len(A):
-            return sorted_list
-        print(f"SL: {sorted_list}")
+        return sorted_list
 
 class Mergesort(Sorter):
     """
