@@ -60,10 +60,10 @@ class Quicksort(Sorter):
             else:
                 avg = random.sample(A, k = 3)
                 median = (sum(avg) // len(avg))
-                sort(median, A)
+                split(median, A)
 
 
-        def sort(median, A):
+        def split(median, A):
             smaller = []
             bigger = []
             for i in A:
