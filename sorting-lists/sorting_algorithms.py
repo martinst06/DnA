@@ -47,7 +47,7 @@ class Quicksort(Sorter):
         sorted_list = []
 
 
-        def getMedian(A):
+        def getMedianOrSort(A):
             if len(A) < 3:
                 if len(A) < 2:
                     for i in A:
@@ -71,11 +71,10 @@ class Quicksort(Sorter):
                     smaller.append(i)
                 elif i > median:
                     bigger.append(i)
-            print(f"smaller: {smaller}")
-            getMedian(smaller)
-            getMedian(bigger)
+            getMedianOrSort(smaller)
+            getMedianOrSort(bigger)
 
-        getMedian(A)
+        getMedianOrSort(A)
         return sorted_list
 
 class Mergesort(Sorter):
