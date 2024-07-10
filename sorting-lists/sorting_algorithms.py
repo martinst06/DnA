@@ -85,8 +85,29 @@ class Mergesort(Sorter):
     name = "MERGESORT"
     def sort(self, A):
         A = list(A)
-        # TODO: Bitte implementieren
-        return A
+        put = []
+
+        def listThing(A):
+            split = splitList(A)
+            if len(A) > 1:
+                sublist1 = A[:split]
+                sublist2 = A[split:]
+                print(f"sub1: {sublist1}")
+                print(f"sub2: {sublist2}")
+                listThing(sublist1)
+                listThing(sublist2)
+            elif len(A) <= 1:
+                put.append(A[0])
+
+        def splitList(A):
+            split = len(A) // 2
+            return split
+
+        # def join():
+        #     print("join")
+
+        listThing(A)
+        return put
 
 if __name__ == "__main__":
     for s in [Bubblesort(), Quicksort(), Mergesort()]:
