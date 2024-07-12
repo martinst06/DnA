@@ -43,7 +43,6 @@ class Quicksort(Sorter):
     name = "QUICKSORT"
     def sort(self, A):
         A = list(A)
-        print (A)
         sorted_list = []
 
 
@@ -85,29 +84,68 @@ class Mergesort(Sorter):
     name = "MERGESORT"
     def sort(self, A):
         A = list(A)
-        put = []
+        print(A)
+        sorted_list = []
+        
 
-        def listThing(A):
-            split = splitList(A)
-            if len(A) > 1:
-                sublist1 = A[:split]
-                sublist2 = A[split:]
-                print(f"sub1: {sublist1}")
-                print(f"sub2: {sublist2}")
-                listThing(sublist1)
-                listThing(sublist2)
-            elif len(A) <= 1:
-                put.append(A[0])
+        # def switch(current):
+        #     for n in current: # for j in n or msth for basically add one position after every comparison??
+        #         if current[n] > current[n + 1]:
+        #             current[n], current[n + 1] = current[n + 1], current[n]
+        #             sorted_list.append(current)
 
+        #         print(f"current2: {current}")
+        #         return current
+
+        def listThing(left, right):
+            print(f"left: {left}")
+            print(f"right: {right}")
+            splitList(left)
+            splitList(right)
+        
         def splitList(A):
-            split = len(A) // 2
-            return split
+            if len(A) > 1:
+                split = len(A) // 2
+                left = A[:split]
+                right = A[split:]
+                listThing(left, right)
 
-        # def join():
-        #     print("join")
+            elif len(A) == 1:
+                sortt(A)
 
-        listThing(A)
-        return put
+        temp = []
+        def sortt(A):
+            for i in A:
+                temp.append(i)
+
+                if (len(temp) % 2) == 1:
+                    for i in temp:
+                        sorted_list.append(i)
+                        print(f"appended: {i}")
+                    temp.clear()
+                elif (len(temp) % 2) == 0:
+                    if temp[0] > temp[1]:
+                        temp[0], temp[1] = temp[1], temp[0]
+                    for i in temp:
+                        sorted_list.append(i)
+                    temp.clear()
+
+        def sorting(A):
+            for n in A:
+                for m in A:
+                    if A[m] > A[n]:
+                        # not done
+                        sublist.append(A[n])
+                    elif A[m] <= A[n]:
+                        sublist.append(A[m])
+                    elif A[m] == A[-1]:
+                        sublist.append(A[m])
+                    
+
+
+        splitList(A)
+        print(sorted_list)
+        return sorted_list
 
 if __name__ == "__main__":
     for s in [Bubblesort(), Quicksort(), Mergesort()]:
