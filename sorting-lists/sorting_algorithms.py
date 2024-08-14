@@ -40,17 +40,21 @@ class Quicksort(Sorter):
         A = list(A)
         sortedList = []
 
+        def sortNum(A):
+            for i in A:
+                sortedList.append(i)
 
         def getMedianOrSort(A):
-            if len(A) < 3:
-                if len(A) < 2:
-                    for i in A:
-                        sortedList.append(i)
-                elif len(A) == 2:
+            n = len(A)
+
+            if n < 3:
+                if n < 2:
+                    sortNum(A)
+
+                elif n == 2:
                     if A[0] > A[1]:
-                        A[0], A[1] = A[1], A[0]
-                    for i in A:
-                        sortedList.append(i)
+                        A[0], A[1] = A[1], A[0]                    
+                    sortNum(A)
             else:
                 avg = random.sample(A, k = 3)
                 median = (sum(avg) // len(avg))
