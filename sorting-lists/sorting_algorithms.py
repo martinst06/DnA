@@ -85,67 +85,36 @@ class Mergesort(Sorter):
     def sort(self, A):
         A = list(A)
         print(A)
-        sorted_list = []
-        
 
-        # def switch(current):
-        #     for n in current: # for j in n or msth for basically add one position after every comparison??
-        #         if current[n] > current[n + 1]:
-        #             current[n], current[n + 1] = current[n + 1], current[n]
-        #             sorted_list.append(current)
-
-        #         print(f"current2: {current}")
-        #         return current
-
-        def listThing(left, right):
-            print(f"left: {left}")
-            print(f"right: {right}")
-            splitList(left)
-            splitList(right)
-        
         def splitList(A):
-            if len(A) > 1:
-                split = len(A) // 2
-                left = A[:split]
-                right = A[split:]
-                listThing(left, right)
+            if len(A) <= 1:
+                return A
 
-            elif len(A) == 1:
-                sortt(A)
+            split = len(A) // 2
+            left = splitList(A[:split])
+            right = splitList(A[split:])
 
-        temp = []
-        def sortt(A):
-            for i in A:
-                temp.append(i)
+            return sorting(left, right)
 
-                if (len(temp) % 2) == 1:
-                    for i in temp:
-                        sorted_list.append(i)
-                        print(f"appended: {i}")
-                    temp.clear()
-                elif (len(temp) % 2) == 0:
-                    if temp[0] > temp[1]:
-                        temp[0], temp[1] = temp[1], temp[0]
-                    for i in temp:
-                        sorted_list.append(i)
-                    temp.clear()
+        def sorting(left, right):
+            a = b = 0
+            orderedList = []
+            while a < len(left) and b < len(right): # when one side is finished, while loop ends because it reaches the amount of items on that side
+                if left[a] < right[b]:
+                    orderedList.append(left[a])
+                    a += 1
 
-        def sorting(A):
-            for n in A:
-                for m in A:
-                    if A[m] > A[n]:
-                        # not done
-                        sublist.append(A[n])
-                    elif A[m] <= A[n]:
-                        sublist.append(A[m])
-                    elif A[m] == A[-1]:
-                        sublist.append(A[m])
-                    
+                else:
+                    orderedList.append(right[b])
+                    b += 1
+            
+            orderedList.extend(left[a:])
+            orderedList.extend(right[b:])
+            
+            return orderedList
 
 
-        splitList(A)
-        print(sorted_list)
-        return sorted_list
+        return splitList(A)
 
 if __name__ == "__main__":
     for s in [Bubblesort(), Quicksort(), Mergesort()]:
