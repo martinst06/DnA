@@ -17,18 +17,13 @@ class Bubblesort(Sorter):
     name = "BUBBLESORT"
     def sort(self, A):
         A = list(A)
-        # print(A)
-
         n = len(A)
-
 
         for sm in range(n):
             for j in range(0, n - sm - 1):
                 if A[j] > A[j + 1]:
                     A[j:j + 2] = [A[j + 1], A[j]]
                     j = j + 1
-                    # print(A)
-                    time.sleep(0.01)
 
                 elif A[j] < A[j + 1]:
                     j = j + 1
@@ -43,19 +38,19 @@ class Quicksort(Sorter):
     name = "QUICKSORT"
     def sort(self, A):
         A = list(A)
-        sorted_list = []
+        sortedList = []
 
 
         def getMedianOrSort(A):
             if len(A) < 3:
                 if len(A) < 2:
                     for i in A:
-                        sorted_list.append(i)
+                        sortedList.append(i)
                 elif len(A) == 2:
                     if A[0] > A[1]:
                         A[0], A[1] = A[1], A[0]
                     for i in A:
-                        sorted_list.append(i)
+                        sortedList.append(i)
             else:
                 avg = random.sample(A, k = 3)
                 median = (sum(avg) // len(avg))
@@ -74,7 +69,7 @@ class Quicksort(Sorter):
             getMedianOrSort(bigger)
 
         getMedianOrSort(A)
-        return sorted_list
+        return sortedList
 
 class Mergesort(Sorter):
     """
@@ -84,7 +79,6 @@ class Mergesort(Sorter):
     name = "MERGESORT"
     def sort(self, A):
         A = list(A)
-        print(A)
 
         def splitList(A):
             if len(A) <= 1:
@@ -98,21 +92,21 @@ class Mergesort(Sorter):
 
         def sorting(left, right):
             a = b = 0
-            orderedList = []
+            sortedList = []
             while a < len(left) and b < len(right): # when one side is finished, while loop ends because it reaches the amount of items on that side
+
                 if left[a] < right[b]:
-                    orderedList.append(left[a])
+                    sortedList.append(left[a])
                     a += 1
 
                 else:
-                    orderedList.append(right[b])
+                    sortedList.append(right[b])
                     b += 1
             
-            orderedList.extend(left[a:])
-            orderedList.extend(right[b:])
-            
-            return orderedList
+            sortedList.extend(left[a:])
+            sortedList.extend(right[b:])
 
+            return sortedList
 
         return splitList(A)
 
