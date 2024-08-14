@@ -103,8 +103,7 @@ class Mergesort(Sorter):
                     sortedList.append(right[b])
                     b += 1
             
-            sortedList.extend(left[a:])
-            sortedList.extend(right[b:])
+            sortedList.extend(left[a:] + right[b:])
 
             return sortedList
 
