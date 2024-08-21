@@ -23,10 +23,6 @@ class Bubblesort(Sorter):
             for j in range(0, n - sm - 1):
                 if A[j] > A[j + 1]:
                     A[j:j + 2] = [A[j + 1], A[j]]
-                    j = j + 1
-
-                elif A[j] < A[j + 1]:
-                    j = j + 1
         else:
             return A
 
@@ -50,14 +46,14 @@ class Quicksort(Sorter):
             if n < 3:
                 if n < 2:
                     sortNum(A)
-
                 elif n == 2:
                     if A[0] > A[1]:
                         A[0], A[1] = A[1], A[0]                    
                     sortNum(A)
+
             else:
                 avg = random.sample(A, k = 3)
-                median = (sum(avg) // len(avg))
+                median = (sum(avg) // len(avg))#not median
                 split(median, A)
 
 
@@ -71,9 +67,9 @@ class Quicksort(Sorter):
                     bigger.append(i)
             getMedianOrSort(smaller)
             getMedianOrSort(bigger)
-
         getMedianOrSort(A)
         return sortedList
+
 
 class Mergesort(Sorter):
     """
