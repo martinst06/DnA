@@ -16,12 +16,13 @@ class LinkedList:
             return: The modified LinkedList
             raise: IndexError if pos is outside of the list
         """
-        if pos == 0 and self.head == None:
-            self.head = element
-        elif pos == 0 and self.head != None:
-            self.head.previous = element
-            element.next = self.head
-            self.head = element
+        if pos == 0:
+            if self.head:
+                self.head.previous = element
+                element.next = self.head
+                self.head = element
+            else:
+                self.head = element
         else:
             counter = 0
             testElement = self.head
@@ -164,3 +165,4 @@ if __name__ == "__main__":
         pass
     else:
         raise RuntimeError("Reading out of bounds should raise IndexError!")
+
