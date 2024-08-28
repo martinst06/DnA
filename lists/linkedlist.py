@@ -31,11 +31,7 @@ class LinkedList:
                     raise IndexError("IndexError")
                 testElement = testElement.next
                 counter += 1
-            # self.insert(element)
-            testElement.previous.next = element
-            element.previous = testElement.previous
-            element.next = testElement
-            testElement.previous = element
+            self.insert(element)
         print("insert", element.value)
 
 
@@ -59,11 +55,7 @@ class LinkedList:
                 element = element.next
                 counter += 1
             print("remove", element.value)
-            element.previous.next = element.next
-            element.next.previous = element.previous
-            element.next = None
-            element.pervious = None
-
+            self.remove()
 
     def find(self, value):
         """
@@ -172,4 +164,3 @@ if __name__ == "__main__":
         pass
     else:
         raise RuntimeError("Reading out of bounds should raise IndexError!")
-
