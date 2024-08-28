@@ -4,12 +4,15 @@ def binary_search(L, k):
     mid = L[split]
     if len(L) > 1:
         if mid > k:
+            print("smaller", mid)
             return binary_search(L[:split], k)
 
         elif mid < k:
+            print("bigger", mid)
             return binary_search(L[split:], k)
 
         elif mid == k:
+            print("equal", k)
             return k
 
     return None
