@@ -67,16 +67,16 @@ class LinkedList:
         """
         element = self.head
         counter = 0
-
         while element != None:
-            if element.value != value:
+            if element.value != value.value: # for import, otherwise use below
+            # if element.value != value: 
                 element = element.next
                 counter += 1
             else:
                 print("find", element.value)
                 return counter
 
-            return -1
+        return -1
 
 
     def __getitem__(self, pos):
@@ -96,6 +96,7 @@ class LinkedList:
             element = element.next
             counter += 1
 
+        print(element.value)
         return element
 
 
